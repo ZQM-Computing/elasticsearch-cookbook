@@ -59,7 +59,7 @@ class ElasticsearchScriptContracts(unittest.TestCase):
         self.assertIn('payload.get("errors") is not False', script)
         self.assertIn('len(items) != 3', script)
         self.assertIn('properties.get("location", {}).get("type") != "geo_point"', script)
-        self.assertIn('"$DIR/docs.json"', script)
+        self.assertIn('"@$DIR/docs.json"', script)
 
     def test_search_examples_assert_hit_counts_and_aggregation(self):
         script = (EXAMPLES / "03-search-queries" / "queries.sh").read_text(encoding="utf-8")
