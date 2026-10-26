@@ -1,0 +1,4 @@
+# Heap settings for the single-node dev configuration.
+# Fleet value: 1g heap.
+-Xms1g
+-Xmx1g

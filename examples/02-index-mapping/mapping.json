@@ -1,0 +1,1 @@
+{"mappings":{"properties":{"kind":{"type":"keyword"},"location":{"type":"geo_point"},"observed":{"format":"strict_date_optional_time","type":"date"},"title":{"type":"keyword"}}},"settings":{"number_of_replicas":0,"number_of_shards":1}}

@@ -15,7 +15,7 @@ A **Elasticsearch cookbook** for single-node indices, mappings, and geo search. 
 
 ## Repository role and status
 
-**Status:** Active, public — seeding. Pattern passes land in follow-up work from fleet-verified setups; the tables below list what is planned, not what is already written.
+**Status:** Active, public — first pattern pass written (design-only, gate 1 target; runtime validation pending).
 
 **What this repository is:** Elasticsearch patterns — see the table below.
 
@@ -33,14 +33,14 @@ Engineers who run a local search index behind a catalog or API.
 - Java runtime as bundled
 - Bash or PowerShell for the HTTP passes
 
-## Patterns (planned)
+## Patterns
 
-| # | Example | What it will demonstrate |
-|---|---------|--------------------------|
-| 01 | `01-single-node` | Single-node setup: heap, discovery, and security-disabled dev configuration |
-| 02 | `02-index-mapping` | Creating indices and mappings, including geo_point fields |
-| 03 | `03-search-queries` | Search, filter, and aggregation queries |
-| 04 | `04-geonetwork-pairing` | Pairing with GeoNetwork's gn-records, gn-features, and gn-searchlogs indices |
+| # | Example | Status | What it demonstrates |
+|---|---------|--------|----------------------|
+| 01 | [01-single-node](examples/01-single-node/README.md) | Written (design-only) | Single-node setup: heap, discovery, and security-disabled dev configuration |
+| 02 | [02-index-mapping](examples/02-index-mapping/README.md) | Written (design-only) | Creating indices and mappings, including geo_point fields |
+| 03 | [03-search-queries](examples/03-search-queries/README.md) | Written (design-only) | Search, filter, and aggregation queries |
+| 04 | [04-geonetwork-pairing](examples/04-geonetwork-pairing/README.md) | Written (design-only) | Pairing with GeoNetwork's gn-records, gn-features, and gn-searchlogs indices |
 
 ## Repository layout
 
