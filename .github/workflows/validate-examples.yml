@@ -22,6 +22,24 @@ jobs:
             echo "Checking $script"
             bash -n "$script"
           done < <(find examples -type f -name '*.sh' -print0)
+      - name: Parse JSON fixtures and bulk NDJSON
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          for path in sorted(Path("examples").rglob("*.json")):
+              lines = path.read_text(encoding="utf-8").splitlines()
+              if path.name == "docs.json":
+                  for line_number, line in enumerate(lines, 1):
+                      json.loads(line)
+                  print(f"Valid NDJSON: {path} ({len(lines)} lines)")
+              else:
+                  json.loads(path.read_text(encoding="utf-8"))
+                  print(f"Valid JSON: {path}")
+          PY
+      - name: Run fixture and script contracts
+        run: python -m unittest discover -s tests -v
       - name: Parse XML fixtures
         run: |
           python - <<'PY'
