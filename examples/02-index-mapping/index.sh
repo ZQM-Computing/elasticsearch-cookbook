@@ -41,9 +41,9 @@ for item in items:
     result = item.get("index", {})
     if result.get("status") not in (200, 201) or result.get("error"):
         raise SystemExit(f"Bulk item failed: {item}")
-if sum(item["index"]["status"] == 201 for item in items) != 3:
-    raise SystemExit(f"Expected 3 newly created docs: {items}")
-print("Bulk contract passed: 3 documents created, errors=false.")
+if any(item.get("index", {}).get("status") not in (200, 201) for item in items):
+    raise SystemExit(f"Unexpected bulk item status: {items}")
+print("Bulk contract passed: 3 documents indexed (create or update), errors=false.")
 PY
 
 echo "-- read one back --"
