@@ -1,0 +1,36 @@
+name: Validate examples
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Check shell syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS= read -r -d '' script; do
+            echo "Checking $script"
+            bash -n "$script"
+          done < <(find examples -type f -name '*.sh' -print0)
+      - name: Parse XML fixtures
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from xml.etree import ElementTree
+
+          fixtures = sorted(Path("examples").rglob("*.xml"))
+          for fixture in fixtures:
+              ElementTree.parse(fixture)
+              print(f"Valid XML: {fixture}")
+          print(f"Parsed {len(fixtures)} XML fixture(s)")
+          PY
