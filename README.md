@@ -11,7 +11,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-A **Elasticsearch cookbook** for single-node indices, mappings, and geo search. Patterns are drawn from the ZQM fleet's Elasticsearch 8.19.13 installs (single-node, 1g heap, xpack disabled) on Node-3 and Node-4, where GeoNetwork proved index-level connectivity. It is intended for Engineers who run a local search index behind a catalog or API. Validate each pattern against your own data, software versions, and operating environment before adopting it.
+A **Elasticsearch cookbook** for single-node indices, mappings, and geo search. Patterns are drawn from the ZQM fleet's Elasticsearch 8.19.13 installs (single-node, 1g heap, xpack disabled) on Node-3 and Node-4 (as of Oct 2026; verify against the current fleet), where GeoNetwork proved index-level connectivity. It is intended for Engineers who run a local search index behind a catalog or API. Validate each pattern against your own data, software versions, and operating environment before adopting it.
 
 ## Repository role and status
 
