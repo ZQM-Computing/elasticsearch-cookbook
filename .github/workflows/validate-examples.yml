@@ -11,9 +11,14 @@ permissions:
 jobs:
   static:
     runs-on: [self-hosted, Linux, X64, zqm-linux]
+    timeout-minutes: 30
     steps:
       - name: Check out source
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.14'
       - name: Check shell syntax
         shell: bash
         run: |
@@ -24,7 +29,7 @@ jobs:
           done < <(find examples -type f -name '*.sh' -print0)
       - name: Parse JSON fixtures and bulk NDJSON
         run: |
-          python - <<'PY'
+          python3 - <<'PY'
           import json
           from pathlib import Path
 
@@ -39,10 +44,10 @@ jobs:
                   print(f"Valid JSON: {path}")
           PY
       - name: Run fixture and script contracts
-        run: python -m unittest discover -s tests -v
+        run: python3 -m unittest discover -s tests -v
       - name: Parse XML fixtures
         run: |
-          python - <<'PY'
+          python3 - <<'PY'
           from pathlib import Path
           from xml.etree import ElementTree
 
